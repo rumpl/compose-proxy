@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  nginx:
+    image: nginx:1.17.5
+    volumes:
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "3080:80"
+  api:
+    image: hashicorp/http-echo
+    command: ["-text", "Hello Docker compose"]
+    ports:
+      - 5678:5678
